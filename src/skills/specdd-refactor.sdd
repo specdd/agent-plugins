@@ -1,0 +1,28 @@
+Spec: SpecDD Refactor Skill
+
+Purpose:
+  Guide agents in refactoring code, tests, docs, specs, or project structure while preserving specified behavior.
+
+Owns:
+  ./specdd-refactor/SKILL.md.ejs
+  ./specdd-refactor/agents/openai.yaml
+
+Must:
+  Identify public contracts, scenarios, invariants, dependencies, and forbidden boundaries before refactoring.
+  Resolve authority for every file that moves or changes.
+  Preserve public contracts, scenarios, invariants, and forbidden boundaries.
+  Preserve behavior described by active specs.
+  Prefer small mechanical steps with verification between risky changes.
+  Run baseline checks before refactoring when practical and rerun them after.
+  Update specs, docs, and tests only when the refactor changes structure they describe.
+  Resolve authority for a behavior change before continuing when the request stops being a pure refactor.
+
+Must not:
+  Move responsibility across spec boundaries without explicit scope.
+  Widen dependencies or add forbidden imports.
+  Rename public symbols, paths, or contracts unless explicitly in scope.
+  Treat behavior changes as refactors.
+
+Depends on:
+  ../fragments/bootstrap-resolution.md.ejs
+  ../fragments/spec-chain-resolution.md.ejs

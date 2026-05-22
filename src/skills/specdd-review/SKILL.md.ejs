@@ -1,0 +1,36 @@
+---
+name: specdd-review
+description: Use when <%= agentName %> needs to review a diff, branch, pull request, changed files, or proposed changes against active SpecDD contracts, focusing on spec violations, behavioral regressions, missing checks, and concrete findings.
+license: Apache-2.0
+---
+
+# SpecDD Review
+
+Use this skill for code-review style review under SpecDD. Do not edit files
+unless the user explicitly asks for changes.
+
+<%- include('/fragments/bootstrap-resolution.md.ejs') -%>
+
+<%- include('/fragments/spec-chain-resolution.md.ejs') -%>
+
+## Workflow
+
+1. Compare the diff against applicable `Must`, `Must not`, `Forbids`, `Scenario`, `Tasks`, and `Done when` entries.
+2. Check whether verification matches the behavioral risk.
+3. Report concrete findings, questions, or residual risk.
+
+## Review Output
+
+Lead with findings, ordered by severity. For each finding, include:
+
+- File and line when available.
+- The violated or risky SpecDD contract.
+- The concrete behavior or regression risk.
+- The smallest likely fix.
+
+Then include open questions or assumptions. Keep summaries secondary and brief.
+If there are no findings, say so clearly and mention any residual test or spec
+coverage gap.
+
+Do not invent requirements beyond the active specs. If behavior is underspecified,
+call that out as an uncertainty rather than a violation.

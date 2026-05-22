@@ -1,0 +1,32 @@
+---
+name: specdd-trace
+description: Use when <%= agentName %> needs to map SpecDD specs to code, tests, docs, changed files, public behavior, references, verification coverage, or gaps while preserving the distinction between read context and write authority.
+license: Apache-2.0
+---
+
+# SpecDD Trace
+
+Use this skill to explain how specs, files, tests, and changes relate. Do not
+edit files unless the user explicitly asks for changes.
+
+<%- include('/fragments/bootstrap-resolution.md.ejs') -%>
+
+<%- include('/fragments/spec-chain-resolution.md.ejs') -%>
+
+## Workflow
+
+1. Inspect implementation, tests, or diffs needed to connect contracts to behavior.
+2. Identify the reason each file or spec is included.
+3. Report missing links, stale specs, untested scenarios, or unclear authority.
+
+## Trace Output
+
+For each relevant item, identify:
+
+- Why it was included, such as bootstrap, ancestor spec, nearest local spec, explicit reference, requested file, or changed file.
+- The active constraints or behaviors it contributes.
+- The code, tests, docs, or tasks that satisfy or fail to satisfy it.
+- Any missing link, stale spec, untested scenario, or unclear authority.
+
+Do not expand write authority. Referenced files remain read context unless the
+active spec chain grants modification authority.

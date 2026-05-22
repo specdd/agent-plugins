@@ -1,0 +1,4 @@
+interface:
+  display_name: "SpecDD Adopt"
+  short_description: "Create or improve SpecDD specs"
+  default_prompt: "Create specs for this project."

@@ -1,0 +1,29 @@
+Spec: SpecDD Plan Skill
+
+Purpose:
+  Guide agents in planning code, docs, tests, refactors, tasks, or spec changes under existing SpecDD contracts.
+
+Owns:
+  ./specdd-plan/SKILL.md.ejs
+  ./specdd-plan/agents/openai.yaml
+
+Must:
+  Trigger planning only when the user asks for a plan or when unclear scope, authority, public contracts, risk, or verification would make immediate implementation unsafe.
+  Resolve target scope, bootstrap files, effective spec chain, and write authority.
+  Summarize the target scope and applicable spec chain.
+  Identify files or specs likely to change.
+  Identify relevant `Must`, `Must not`, `Forbids`, `Scenario`, `Tasks`, and `Done when` constraints.
+  Identify verification likely needed, blockers, conflicts, and risks.
+  Propose the smallest safe implementation sequence.
+  Produce a practical plan without editing files.
+  Wait for the user to approve or revise the plan before implementation.
+
+Must not:
+  Delay ordinary authorized implementation by treating every SpecDD change as needing a plan first.
+  Propose work that violates active `Must not`, `Forbids`, or authority constraints.
+  Propose broad refactors or new contracts unless the active specs or user request require them.
+  Present unclear write authority as safe implementation scope.
+
+Depends on:
+  ../fragments/bootstrap-resolution.md.ejs
+  ../fragments/spec-chain-resolution.md.ejs

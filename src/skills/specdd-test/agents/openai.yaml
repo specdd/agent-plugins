@@ -1,0 +1,4 @@
+interface:
+  display_name: "SpecDD Test"
+  short_description: "Derive focused tests from active specs"
+  default_prompt: "Create tests from this spec."

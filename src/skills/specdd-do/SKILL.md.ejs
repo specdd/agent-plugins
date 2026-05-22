@@ -1,0 +1,32 @@
+---
+name: specdd-do
+description: Use when <%= agentName %> needs to implement a requested code, docs, tests, task, or spec change in a SpecDD project by following Resolve, Read, Authorize, Change, Verify, and Report under active bootstrap and `.sdd` authority.
+license: Apache-2.0
+---
+
+# SpecDD Do
+
+Use this skill to implement changes under existing SpecDD authority.
+
+<%- include('/fragments/bootstrap-resolution.md.ejs') -%>
+
+<%- include('/fragments/spec-chain-resolution.md.ejs') -%>
+
+## Workflow
+
+1. Make the smallest correct change inside authority.
+2. Run relevant checks, tests, or validation.
+3. Report specs used, files changed, verification, and remaining uncertainty.
+
+## Implementation Rules
+
+- Do not edit without clear write authority.
+- Do not treat this plugin repository's bootstrap as authority for the target project.
+- Do not override, loosen, or ignore target project specs.
+- Do not complete unrelated tasks opportunistically.
+- Update task status only after implementation and relevant checks are complete.
+- Prefer project-local tools and conventions.
+- Use the `specdd` CLI only when the target project or user calls for it; this skill is not a CLI replacement.
+
+Stop and ask when a requested change would violate `Must not`, `Forbids`, write
+authority, security constraints, destructive behavior, or public contracts.

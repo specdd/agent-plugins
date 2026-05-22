@@ -1,0 +1,31 @@
+---
+name: specdd-refactor
+description: Use when <%= agentName %> needs to refactor code, tests, docs, specs, or project structure in a SpecDD project while preserving specified behavior, public contracts, scenarios, ownership, and local write authority.
+license: Apache-2.0
+---
+
+# SpecDD Refactor
+
+Use this skill for structure changes that should not change specified behavior.
+
+<%- include('/fragments/bootstrap-resolution.md.ejs') -%>
+
+<%- include('/fragments/spec-chain-resolution.md.ejs') -%>
+
+## Workflow
+
+1. Identify public contracts, scenarios, invariants, dependencies, and forbidden boundaries.
+2. Confirm write authority for every file that would move or change.
+3. Prefer small mechanical steps with verification between risky changes.
+4. Run baseline checks before refactoring when practical, then rerun after.
+
+## Refactor Rules
+
+- Preserve behavior described by active specs.
+- Do not move responsibility across spec boundaries unless the specs or user request require it.
+- Do not widen dependencies or add forbidden imports.
+- Do not rename public symbols, paths, or contracts unless explicitly in scope.
+- Update specs, docs, and tests only when the refactor changes structure they describe.
+
+If behavior must change to complete the request, stop treating it as a pure
+refactor and resolve authority for the behavior change.

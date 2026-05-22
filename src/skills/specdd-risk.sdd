@@ -1,0 +1,24 @@
+Spec: SpecDD Risk Skill
+
+Purpose:
+  Guide agents in classifying change risk before SpecDD work starts or when the user asks for a risk call.
+
+Owns:
+  ./specdd-risk/SKILL.md.ejs
+  ./specdd-risk/agents/openai.yaml
+
+Must:
+  Identify active write authority and stop conditions.
+  Check authority, public contracts, security, data, dependencies, verification, and rollback concerns.
+  Check affected public contracts, security boundaries, data shape, migrations, dependencies, and verification.
+  Classify risk as low, medium, or high with concrete reasons.
+  Raise risk for unclear authority, conflicting specs, public APIs, persistent data, auth, secrets, payments, releases, migrations, spec-boundary crossings, missing scenario tests, destructive operations, external systems, live credentials, or time-sensitive behavior.
+  End with the smallest safe next step and required verification.
+
+Must not:
+  Edit files while assessing risk unless explicitly requested.
+  Downplay unclear write authority, destructive work, public-contract changes, or high-stakes security and data concerns.
+
+Depends on:
+  ../fragments/bootstrap-resolution.md.ejs
+  ../fragments/spec-chain-resolution.md.ejs

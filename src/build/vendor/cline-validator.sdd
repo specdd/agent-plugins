@@ -1,0 +1,27 @@
+Spec: Cline Validator
+
+Platform: Node.js
+
+Purpose:
+  Validate the generated Cline skills package using documented Cline skill constraints until a stable native validator exists.
+
+Owns:
+  ./cline-validator.js
+
+Must:
+  Run without third-party dependencies or network access.
+  Accept the generated plugin root path as its only command-line argument.
+  Validate `skills/*/SKILL.md` directories under the given plugin root.
+  Require every skill directory name to use kebab-case.
+  Require each `SKILL.md` file to start with YAML frontmatter.
+  Require `name` and `description` frontmatter fields.
+  Require frontmatter `name` to match the skill directory name.
+  Allow extra frontmatter fields used by other compatible skill consumers.
+  Enforce Cline's documented `description` maximum of 1024 characters.
+  Enforce Cline's documented instruction body guidance with a conservative estimate under 5000 tokens.
+  Print a concise validation summary on success.
+  Print concrete file-specific failures and exit nonzero on validation failure.
+
+Must not:
+  Modify generated plugin output.
+  Validate Junie, Copilot, Codex, Claude, or Antigravity package-specific rules.

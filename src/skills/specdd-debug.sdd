@@ -1,0 +1,28 @@
+Spec: SpecDD Debug Skill
+
+Purpose:
+  Guide agents in diagnosing or fixing bugs by comparing observed behavior with governing SpecDD contracts.
+
+Owns:
+  ./specdd-debug/SKILL.md.ejs
+  ./specdd-debug/agents/openai.yaml
+
+Must:
+  Reproduce or inspect the failure before changing code when practical.
+  Compare observed behavior with active specs before changing code.
+  Compare behavior with applicable `Must`, `Must not`, `Scenario`, `Handles`, `Returns`, and `Raises` entries.
+  Classify failures as implementation drift, test drift, spec ambiguity, or missing coverage.
+  Fix the smallest root cause inside active write authority.
+  Add or update focused regression verification when appropriate.
+  Report the contract used, root cause, files changed, and verification result.
+
+Must not:
+  Change specs to match broken behavior unless explicitly requested.
+  Broaden behavior beyond the governing contracts.
+  Hide ambiguous public behavior behind implementation assumptions.
+  Broaden error handling or dependencies beyond the governing specs.
+  Edit when the spec and observed desired behavior conflict without asking first.
+
+Depends on:
+  ../fragments/bootstrap-resolution.md.ejs
+  ../fragments/spec-chain-resolution.md.ejs

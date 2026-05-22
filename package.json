@@ -1,0 +1,16 @@
+{
+  "name": "@specdd/agent-plugins",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Source templates for SpecDD agent plugins.",
+  "repository": "https://github.com/specdd/agent-plugins",
+  "license": "Apache-2.0",
+  "scripts": {
+    "build": "node src/build/build.js",
+    "build:check": "node src/build/build.js --check",
+    "clean": "node src/build/build.js --clean"
+  },
+  "dependencies": {
+    "ejs": "^3.1.10"
+  }
+}

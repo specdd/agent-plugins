@@ -1,0 +1,4 @@
+interface:
+  display_name: "SpecDD Explain"
+  short_description: "Explain specs in clear human language"
+  default_prompt: "Use $specdd-explain to explain this spec in human language."

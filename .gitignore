@@ -1,0 +1,5 @@
+tmp/
+.agents/
+.codex/
+.idea/
+node_modules/

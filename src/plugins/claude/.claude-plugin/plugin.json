@@ -1,0 +1,19 @@
+{
+  "name": "specdd",
+  "description": "Reusable Claude Code skills for SpecDD development workflows.",
+  "version": "0.1.0",
+  "author": {
+    "name": "SpecDD",
+    "email": "hello@specdd.ai",
+    "url": "https://specdd.ai"
+  },
+  "homepage": "https://specdd.ai",
+  "repository": "https://github.com/specdd/plugin-claude",
+  "license": "Apache-2.0",
+  "keywords": [
+    "specdd",
+    "specification-driven-development",
+    "claude-code",
+    "skills"
+  ]
+}

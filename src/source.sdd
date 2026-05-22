@@ -1,0 +1,30 @@
+Spec: Agent Plugin Source
+
+Purpose:
+  Own shared skill templates, product plugin templates, reusable fragments, shared files, and build scripts.
+
+Structure:
+  ./skills/**: Shared skill specs and `SKILL.md.ejs` templates.
+  ./plugins/**: Product-specific plugin package templates.
+  ./shared/**: Shared files and assets copied into generated plugin outputs.
+  ./fragments/**: Reusable rendered instruction fragments.
+  ./build/**: Build scripts, product target configuration, and project-local validators.
+
+Owns:
+  ./skills/**
+  ./plugins/**
+  ./shared/**
+  ./fragments/**
+  ./build/**
+
+Must:
+  Treat source files as the editable authority for generated `../plugins/*` submodule output.
+  Support Codex, Claude Code, GitHub Copilot, Junie, Cline, and Antigravity from this source tree.
+  Keep shared files centralized under `./shared` or repository-level files when reused by multiple plugin targets.
+  Keep target-specific package files under `./plugins/<target>`.
+  Keep target rendering behavior under `./build`.
+  Keep generated plugin output deterministic and committed in each plugin submodule.
+
+Must not:
+  Store marketplace-only skill behavior outside source templates.
+  Duplicate shared assets or licenses in product plugin source templates.

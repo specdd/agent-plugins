@@ -1,0 +1,4 @@
+interface:
+  display_name: "SpecDD Orient"
+  short_description: "Read bootstraps and prepare for work"
+  default_prompt: "Orient yourself in this SpecDD project."

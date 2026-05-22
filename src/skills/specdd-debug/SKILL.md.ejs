@@ -1,0 +1,30 @@
+---
+name: specdd-debug
+description: Use when <%= agentName %> needs to diagnose or fix a bug in a SpecDD project by reproducing or inspecting failure, comparing observed behavior to active `.sdd` contracts, and applying the smallest authorized fix.
+license: Apache-2.0
+---
+
+# SpecDD Debug
+
+Use this skill to diagnose failures against the specified contract.
+
+<%- include('/fragments/bootstrap-resolution.md.ejs') -%>
+
+<%- include('/fragments/spec-chain-resolution.md.ejs') -%>
+
+## Workflow
+
+1. Reproduce or inspect the failure before changing code when practical.
+2. Compare observed behavior with applicable `Must`, `Must not`, `Scenario`, `Handles`, `Returns`, and `Raises` entries.
+3. Identify whether the issue is implementation drift, test drift, spec ambiguity, or missing spec coverage.
+4. Fix the smallest root cause inside write authority.
+5. Add or update focused regression verification when appropriate.
+
+## Debug Rules
+
+- Do not change specs to match broken behavior unless the user asks for a spec change.
+- Do not hide ambiguous public behavior behind implementation assumptions.
+- Do not broaden error handling or dependencies beyond the governing specs.
+- If the spec and observed desired behavior conflict, ask before editing.
+
+Report the contract used, root cause, files changed, and verification result.

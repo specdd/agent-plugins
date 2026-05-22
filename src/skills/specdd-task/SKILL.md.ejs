@@ -1,0 +1,33 @@
+---
+name: specdd-task
+description: Use when <%= agentName %> needs to find, add, interpret, organize, or update `Tasks` entries in SpecDD `.sdd` files, including task status changes after implementation and verification are complete.
+license: Apache-2.0
+---
+
+# SpecDD Task
+
+Use this skill for `Tasks` sections in `.sdd` files.
+
+<%- include('/fragments/bootstrap-resolution.md.ejs') -%>
+
+<%- include('/fragments/spec-chain-resolution.md.ejs') -%>
+
+## Workflow
+
+1. Read the applicable spec chain for the requested scope, including inherited constraints.
+2. Focus task handling on task-bearing specs that apply to the requested scope.
+3. Treat parent tasks as planning context unless the user targets them directly.
+4. Update task status only in the currently targeted spec unless instructed otherwise.
+
+## Task Handling
+
+- Add tasks only when they are local, actionable, and consistent with inherited constraints.
+- Keep task text concise and implementation-oriented.
+- Mark `[x]` only after the work and relevant checks are complete.
+- Use `[!]` for blocked work and `[?]` for unresolved design decisions.
+- Use `[-]` only when the task is intentionally skipped and the reason is clear.
+- Do not use tasks to override `Must`, `Must not`, `Forbids`, or write authority.
+- Do not complete unrelated tasks while handling a requested task.
+
+When reporting, list task ids or exact task text, status changes, verification,
+and any task that remains blocked or uncertain.

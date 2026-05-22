@@ -1,0 +1,18 @@
+[submodule "plugins/codex"]
+	path = plugins/codex
+	url = git@github.com:specdd/plugin-codex.git
+[submodule "plugins/claude"]
+	path = plugins/claude
+	url = git@github.com:specdd/plugin-claude.git
+[submodule "plugins/copilot"]
+	path = plugins/copilot
+	url = git@github.com:specdd/plugin-copilot.git
+[submodule "plugins/junie"]
+	path = plugins/junie
+	url = git@github.com:specdd/plugin-junie.git
+[submodule "plugins/cline"]
+	path = plugins/cline
+	url = git@github.com:specdd/plugin-cline.git
+[submodule "plugins/antigravity"]
+	path = plugins/antigravity
+	url = git@github.com:specdd/plugin-antigravity.git

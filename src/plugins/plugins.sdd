@@ -1,0 +1,35 @@
+Spec: Product Plugin Sources
+
+Purpose:
+  Own product-specific plugin package templates generated into plugin submodules.
+
+Structure:
+  ./codex/**: Codex plugin manifest and README source.
+  ./claude/**: Claude Code plugin manifest and README source.
+  ./copilot/**: GitHub Copilot skills package README source.
+  ./junie/**: Junie skills package README source.
+  ./cline/**: Cline skills package README source.
+  ./antigravity/**: Antigravity plugin manifest and README source.
+
+Owns:
+  ./codex/**
+  ./claude/**
+  ./copilot/**
+  ./junie/**
+  ./cline/**
+  ./antigravity/**
+
+Must:
+  Keep product-specific manifests, README files, and product-only metadata here.
+  Make product README files explain that plugin repositories are generated from `https://github.com/specdd/agent-plugins`.
+  Make product README files include install commands for the target product.
+  Use the `specdd/specdd` marketplace install path only when the target product supports it.
+  Document GitHub Copilot installation with explicit `gh skill install` commands for each skill.
+  Document Junie and Cline manual copy installation as the primary path, with `gh skill install` as a secondary tracked path.
+  Keep Antigravity as a native plugin package with root `plugin.json` and generated `skills/*/SKILL.md`.
+  Share common skills, fragments, assets, and licenses through parent source areas instead of duplicating them here.
+  Keep paths inside manifests relative to the generated plugin root.
+
+Must not:
+  Store generated `skills` output here.
+  Duplicate shared assets or repository license text.

@@ -1,0 +1,29 @@
+Spec: SpecDD Explain Skill
+
+Purpose:
+  Guide agents in explaining a SpecDD spec or effective spec chain in human language.
+
+Owns:
+  ./specdd-explain/SKILL.md.ejs
+  ./specdd-explain/agents/openai.yaml
+
+Must:
+  Identify the requested spec, target path, feature, behavior, or changed file.
+  Read the active bootstrap chain before the applicable spec or effective spec chain.
+  Read explicit `References` only when they materially affect the explanation.
+  Explain requested specs succinctly, clearly, and with enough depth to understand the feature or area under contract.
+  Explain what the contract means in plain language rather than line by line.
+  Cover relevant purpose, scope, ownership, allowed changes, behavior, boundaries, dependencies, scenarios, examples, tasks, and completion criteria.
+  Preserve the active spec scope, constraints, boundaries, and observable behavior.
+  Distinguish direct spec content from inference, missing context, and underspecified behavior.
+  Keep framework mechanics brief unless the user asks how SpecDD resolution works.
+
+Must not:
+  Edit files while explaining unless explicitly requested.
+  Add behavior, guarantees, workflows, or authority unsupported by the active specs.
+  Treat explanation as changing the spec contract.
+  Expand into sibling specs unless the active spec references them or they are needed to avoid a misleading explanation.
+
+Depends on:
+  ../fragments/bootstrap-resolution.md.ejs
+  ../fragments/spec-chain-resolution.md.ejs

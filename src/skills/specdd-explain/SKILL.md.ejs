@@ -1,0 +1,45 @@
+---
+name: specdd-explain
+description: Use when <%= agentName %> needs to explain a SpecDD `.sdd` file, feature contract, or effective spec chain in succinct human language, covering purpose, scope, behavior, boundaries, tasks, scenarios, and uncertainty without editing or expanding the contract.
+license: Apache-2.0
+---
+
+# SpecDD Explain
+
+Use this skill to explain SpecDD contracts to a human. Keep the explanation
+succinct and clear while including enough depth to understand the feature,
+module, workflow, or file governed by the spec.
+
+<%- include('/fragments/bootstrap-resolution.md.ejs') -%>
+
+<%- include('/fragments/spec-chain-resolution.md.ejs') -%>
+
+## Workflow
+
+1. Identify the requested spec, target path, feature, behavior, or changed file.
+2. Read the active bootstrap chain, then the applicable spec or effective spec chain.
+3. Read explicit `References` only when they materially affect the explanation.
+4. Explain what the contract means in plain language, not line by line.
+5. Separate direct spec requirements from reasonable inference, missing context, and underspecified behavior.
+
+## Explanation Rules
+
+- Explain the purpose, scope, ownership, allowed changes, important behavior, boundaries, dependencies, scenarios, examples, tasks, and completion criteria that matter to the request.
+- Preserve `Must`, `Must not`, `Forbids`, `Depends on`, public contracts, and write authority instead of softening them.
+- Keep framework mechanics brief unless the user asks how SpecDD resolution works.
+- Do not invent behavior, guarantees, workflows, or user stories beyond the active specs.
+- Do not edit files unless the user explicitly asks for a spec or implementation change.
+- If the user asks about one spec only, avoid expanding into sibling specs unless the active spec references them or they are needed to avoid a misleading explanation.
+
+## Output
+
+Prefer short sections such as:
+
+- What this is
+- Scope
+- Behavior
+- Boundaries
+- Open or unclear points
+
+Use prose or compact bullets. Quote sparingly. When something is inferred rather
+than specified, label it as an inference.

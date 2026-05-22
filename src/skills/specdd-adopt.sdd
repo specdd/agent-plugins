@@ -1,0 +1,30 @@
+Spec: SpecDD Adopt Skill
+
+Purpose:
+  Guide agents in creating, restructuring, or improving target-project `.sdd` specs without implementation work unless explicitly requested.
+
+Owns:
+  ./specdd-adopt/SKILL.md.ejs
+  ./specdd-adopt/agents/openai.yaml
+
+Must:
+  Resolve target project bootstrap files and governing specs before spec edits.
+  Treat the user's request as target scope, not as permission to bypass active authority.
+  Read existing ancestor specs for the target area before adding new specs.
+  Identify the smallest useful spec boundary for the requested adoption work.
+  Prefer a root or nearest-area spec before adding narrow child specs.
+  Use path-based ownership, explicit `References`, and `Can modify` or `Owns` to make scope and write authority discoverable.
+  Keep created specs concise, local, behavioral, and authority-oriented.
+  Include only sections that add useful local authority, constraints, behavior, tasks, or context.
+  Report bootstrap files read, specs created or changed, intended governing scope, and unresolved adoption decisions.
+
+Must not:
+  Change implementation files unless explicitly requested.
+  Copy SpecDD framework rules into target project specs.
+  Imply authority from similar names, nearby files, symbols, or observations.
+  Turn uncertain observations into durable contracts.
+  Edit when write authority, ownership, public behavior, or security scope is unclear.
+
+Depends on:
+  ../fragments/bootstrap-resolution.md.ejs
+  ../fragments/spec-chain-resolution.md.ejs

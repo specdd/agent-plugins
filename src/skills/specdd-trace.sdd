@@ -1,0 +1,26 @@
+Spec: SpecDD Trace Skill
+
+Purpose:
+  Guide agents in mapping specs to code, tests, docs, changed files, public behavior, references, verification coverage, and gaps.
+
+Owns:
+  ./specdd-trace/SKILL.md.ejs
+  ./specdd-trace/agents/openai.yaml
+
+Must:
+  Inspect implementation, tests, or diffs needed to connect contracts to behavior.
+  Identify why each file or spec is included in the trace.
+  Preserve the distinction between read context and write authority.
+  Identify whether each included item is bootstrap, ancestor spec, nearest local spec, explicit reference, requested file, or changed file.
+  Map active constraints or behaviors to code, tests, docs, or tasks that satisfy or fail to satisfy them.
+  Report missing links, stale specs, untested scenarios, and unclear authority.
+
+Must not:
+  Edit files unless the user explicitly asks for changes.
+  Include sibling or nearby specs as authority without an applicable bootstrap rule or explicit reference.
+  Expand write authority through referenced or nearby files.
+  Treat referenced files as modification scope unless the active spec chain grants it through `Can modify` or `Owns`.
+
+Depends on:
+  ../fragments/bootstrap-resolution.md.ejs
+  ../fragments/spec-chain-resolution.md.ejs

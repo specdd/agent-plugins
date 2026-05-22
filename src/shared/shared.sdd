@@ -1,0 +1,17 @@
+Spec: Shared Plugin Files
+
+Purpose:
+  Own files copied into every generated product plugin output.
+
+Owns:
+  ./CONTRIBUTING.md
+  ./SECURITY.md
+  ./assets/**
+
+Must:
+  Store reusable assets and other shared package files used by multiple plugin targets.
+  Keep shared files product-neutral.
+  Point contributors and security reporters back to `https://github.com/specdd/agent-plugins` for source changes.
+
+Must not:
+  Store product-specific manifests or marketplace metadata.

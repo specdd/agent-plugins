@@ -1,0 +1,4 @@
+interface:
+  display_name: "SpecDD Debug"
+  short_description: "Diagnose bugs against active specs"
+  default_prompt: "Debug this against the spec."

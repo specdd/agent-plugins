@@ -1,0 +1,36 @@
+---
+name: specdd-plan
+description: Use when <%= agentName %> is explicitly asked for a plan, or must resolve unclear SpecDD scope, write authority, public-contract risk, affected files, or verification before safe implementation; do not trigger for ordinary authorized changes.
+license: Apache-2.0
+---
+
+# SpecDD Plan
+
+Use this skill when the user asks for a plan, or when unclear scope, authority,
+public contracts, risk, or verification would make immediate implementation
+unsafe. Do not edit files while planning.
+
+<%- include('/fragments/bootstrap-resolution.md.ejs') -%>
+
+<%- include('/fragments/spec-chain-resolution.md.ejs') -%>
+
+## Workflow
+
+1. Summarize the target scope and applicable spec chain.
+2. Identify files or specs likely to change.
+3. Identify verification and blockers.
+4. Summarize the smallest safe implementation path.
+
+## Plan Contents
+
+Include:
+
+- Target scope and applicable spec chain.
+- Files or specs likely to change.
+- Write authority and any unclear authority.
+- Relevant `Must`, `Must not`, `Forbids`, `Scenario`, `Tasks`, and `Done when` constraints.
+- Verification likely needed.
+- Risks, conflicts, or questions that block safe implementation.
+
+Keep the plan practical. Do not propose broad refactors or new contracts unless
+the active specs or user request require them.
