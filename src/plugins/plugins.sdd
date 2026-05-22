@@ -1,0 +1,19 @@
+Spec: Product Plugin Sources
+
+Purpose:
+  Own product-specific plugin package templates generated into plugin submodules.
+
+Owns:
+  ./codex/**
+  ./claude/**
+
+Must:
+  Keep product-specific manifests, README files, and product-only metadata here.
+  Make product README files explain that plugin repositories are generated from `https://github.com/specdd/agent-plugins`.
+  Make product README files include install commands for the `specdd/specdd` marketplace.
+  Share common skills, fragments, assets, and licenses through parent source areas instead of duplicating them here.
+  Keep paths inside manifests relative to the generated plugin root.
+
+Must not:
+  Store generated `skills` output here.
+  Duplicate shared assets or repository license text.

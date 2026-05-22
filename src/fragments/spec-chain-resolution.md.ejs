@@ -1,0 +1,12 @@
+## Spec Chain Resolution
+
+Before planning, editing, reviewing, testing, or reporting on a target:
+
+1. Identify the target path, task, behavior, or changed files.
+2. Resolve the effective spec chain using the active bootstrap rules.
+3. Include same-directory basename specs when applicable.
+4. Walk ancestor specs from the selected content root to the target.
+5. Read explicit `References` only when they affect the requested work.
+6. Identify the nearest local spec that grants write authority before any edit.
+
+Do not infer authority from similar filenames, nearby files, symbols, module names, or conventions unless the active bootstrap or a governing spec explicitly defines that mapping.

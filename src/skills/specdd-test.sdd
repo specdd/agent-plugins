@@ -1,0 +1,29 @@
+Spec: SpecDD Test Skill
+
+Purpose:
+  Guide agents in deriving, adding, updating, or assessing focused tests from active SpecDD behavior.
+
+Owns:
+  ./specdd-test/SKILL.md.ejs
+  ./specdd-test/agents/openai.yaml
+
+Must:
+  Identify test authority from the nearest relevant spec before editing tests.
+  Derive test cases from applicable contract sections and scenarios.
+  Derive cases from applicable `Must`, `Scenario`, `Handles`, `Returns`, `Raises`, `Tasks`, and `Done when` entries.
+  Prefer the smallest tests that prove specified behavior.
+  Test observable behavior, not wording in the spec.
+  Cover forbidden behavior when it can regress silently.
+  Add regression tests for confirmed bugs.
+  Run the relevant project test command when available.
+  Report which spec entries each test covers and specified behavior that still lacks verification.
+
+Must not:
+  Add broad test harnesses unless the active specs or project convention require them.
+  Edit tests when test-file authority is unclear.
+  Treat tests as a source for new behavior outside active specs.
+  Overfit tests to spec wording instead of observable behavior.
+
+Depends on:
+  ../fragments/bootstrap-resolution.md.ejs
+  ../fragments/spec-chain-resolution.md.ejs

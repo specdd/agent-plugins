@@ -1,0 +1,25 @@
+Spec: Plugin Build Script
+
+Platform: Node.js
+
+Purpose:
+  Render source plugin templates into product plugin submodule outputs.
+
+Owns:
+  ./build.js
+  ./plugins.js
+
+Must:
+  Render EJS templates from `../skills` into each `../../plugins/*/skills` output.
+  Use `./plugins.js` as the explicit include map for product, shared, and skill files.
+  Expose each target's human-readable agent name to EJS templates.
+  Copy only files explicitly included by the target config into plugin outputs.
+  Set each generated plugin manifest version from `../../plugin-versions.json`.
+  Preserve each plugin submodule's `.git` directory during clean and build.
+  Support build, check, and clean modes.
+  Fail when generated output is stale in check mode.
+  Log coarse build phases, target names, counts, and successful completion without per-file output.
+
+Must not:
+  Modify `../skills`, `../fragments`, `../plugins`, or `../shared`.
+  Require network access during build.

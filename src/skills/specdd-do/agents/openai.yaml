@@ -1,0 +1,4 @@
+interface:
+  display_name: "SpecDD Do"
+  short_description: "Implement changes under active specs"
+  default_prompt: "Implement this SpecDD task."

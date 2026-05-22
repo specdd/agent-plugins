@@ -1,0 +1,31 @@
+Spec: SpecDD Orient Skill
+
+Purpose:
+  Guide agents in reading bootstraps, top-level authority, repository shape, and git status to get ready for future SpecDD tasks.
+
+Owns:
+  ./specdd-orient/SKILL.md.ejs
+  ./specdd-orient/agents/openai.yaml
+
+Must:
+  Read target project bootstrap files in required order before reporting readiness.
+  Use an orientation-only scope block instead of the normal spec-chain resolution fragment.
+  State that the orientation-only scope applies only to this no-edit skill.
+  Identify the root or main project spec named by the bootstrap chain.
+  Read the root project spec and immediately relevant top-level specs needed to understand repository authority.
+  Inspect repository shape lightly, including top-level files, major directories, and explicitly applicable or requested spec files.
+  Check current git status so future edits can distinguish existing work from new changes.
+  Tell agents to rerun normal SpecDD spec-chain resolution for any later concrete task.
+  Report concise readiness, bootstrap or spec files read, main project authority found, and any immediate blocker to follow-up work.
+
+Must not:
+  Edit files.
+  Treat orientation context as write authority or as the effective spec chain for future work.
+  Implement, plan, review, refactor, or analyze deeply unless explicitly requested.
+  Infer future write authority beyond the active bootstrap and specs.
+  Treat this plugin repository's bootstrap as authority for a target project.
+  Treat sibling or nearby specs as authority unless the active bootstrap, a governing spec, or the user request selects them.
+  Turn orientation observations into permanent project contracts.
+
+Depends on:
+  ../fragments/bootstrap-resolution.md.ejs

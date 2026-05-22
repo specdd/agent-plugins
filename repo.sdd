@@ -1,0 +1,48 @@
+Spec: SpecDD Agent Plugins Repository
+
+Purpose:
+  Provide reusable SpecDD-guided agent skills from one source tree.
+  Build product-specific plugin repositories for Codex and Claude from shared sources.
+  Help agents work inside SpecDD projects by following each project's local SpecDD bootstrap chain.
+
+Structure:
+  ./.gitmodules: Submodule mapping for generated plugin repositories.
+  ./plugins/codex: Codex plugin output submodule.
+  ./plugins/claude: Claude plugin output submodule.
+  ./Makefile: Build entry points for generated plugin outputs.
+  ./package.json: Yarn project metadata and build scripts.
+  ./plugin-versions.json: Product plugin version map used during build.
+  ./yarn.lock: Locked Node dependencies for reproducible builds.
+  ./src/**: Source templates, shared files, plugin package templates, fragments, and build scripts.
+  ./README.md: Repository and build documentation.
+  ./DEVELOPMENT.md: Contributor workflow and release documentation.
+
+Can modify:
+  ./**
+
+Must:
+  Act as an agent behavior layer for SpecDD projects.
+  Publish product-specific plugin repositories from `./plugins/*` submodules.
+  Keep plugin metadata aligned with the GitHub repositories and SpecDD publisher identity.
+  Keep product plugin versions in `./plugin-versions.json`.
+  Treat `./src/skills`, `./src/fragments`, `./src/shared`, and `./src/plugins` as the source of truth for generated plugin output.
+  Generate plugin submodule contents from source templates with `make build` or `yarn build`.
+  Provide Makefile targets for initializing, releasing, and resetting plugin submodules.
+  Provide Makefile targets for validating built plugin outputs with product-specific validators.
+  Keep generated plugin submodule output committed and matching the build output.
+  Keep skill instructions concise, reusable, and directed at each target project's active SpecDD bootstrap chain.
+  Keep every skill frontmatter `description` optimized for agent discovery by clearly stating what the skill does, when it should trigger, common target artifacts, and important boundaries before the skill body is loaded.
+  Use and enforce the use of the target project's `.specdd/bootstrap.md` as the primary source of SpecDD rules.
+  Use target project and local bootstrap files when they exist.
+  Make the target project's active bootstrap chain authoritative for spec discovery, write authority, stop conditions, checks, and reporting expectations.
+  Treat target project specs as source-adjacent contracts under the active bootstrap rules.
+
+Must not:
+  Replace the `specdd` CLI.
+  Install or update SpecDD framework files.
+  Embed a static copy of SpecDD framework rules as the plugin's own authority.
+  Use this repository's bootstrap files as authority for other SpecDD projects.
+  Override, loosen, or ignore a target project's active bootstrap chain.
+  Invent project-specific contracts.
+  Turn uncertain or accidental project behavior into a permanent contract.
+  Treat generated files in `./plugins/*` as the source of truth.

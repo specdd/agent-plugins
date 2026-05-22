@@ -1,0 +1,4 @@
+interface:
+  display_name: "SpecDD Review"
+  short_description: "Review changes against specs"
+  default_prompt: "Review these changes against SpecDD."

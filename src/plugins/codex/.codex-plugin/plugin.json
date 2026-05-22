@@ -1,0 +1,42 @@
+{
+  "name": "specdd",
+  "version": "0.1.0",
+  "description": "Reusable Codex skills for SpecDD development workflows.",
+  "author": {
+    "name": "SpecDD",
+    "email": "hello@specdd.ai",
+    "url": "https://specdd.ai"
+  },
+  "homepage": "https://specdd.ai",
+  "repository": "https://github.com/specdd/plugin-codex",
+  "license": "Apache-2.0",
+  "keywords": [
+    "specdd",
+    "specification-driven-development",
+    "codex",
+    "skills",
+    "agents"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "SpecDD",
+    "shortDescription": "SpecDD workflows for Codex",
+    "longDescription": "Reusable Codex skills for orienting, adopting, explaining, planning, implementing, reviewing, testing, tracing, documenting, refactoring, and debugging work under SpecDD project contracts.",
+    "developerName": "SpecDD",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://specdd.ai",
+    "composerIcon": "./assets/logo.svg",
+    "logo": "./assets/logo.svg",
+    "defaultPrompt": [
+      "Orient yourself in this SpecDD project.",
+      "Explain this spec in human language.",
+      "Implement this task under SpecDD.",
+      "Plan this change from the active specs."
+    ],
+    "brandColor": "#0F172A"
+  }
+}

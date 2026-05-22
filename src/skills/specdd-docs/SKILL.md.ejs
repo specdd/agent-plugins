@@ -1,0 +1,28 @@
+---
+name: specdd-docs
+description: Use when <%= agentName %> needs to write or update user, developer, release, onboarding, or operational documentation from SpecDD specs while preserving source contract boundaries and avoiding unsupported promises.
+---
+
+# SpecDD Docs
+
+Use this skill to write or update documentation from specs.
+
+<%- include('/fragments/bootstrap-resolution.md.ejs') -%>
+
+<%- include('/fragments/spec-chain-resolution.md.ejs') -%>
+
+## Workflow
+
+1. Identify the audience and documentation file authority before editing.
+2. Write docs that explain the specified behavior without expanding the contract.
+3. Keep docs aligned with changed specs, tasks, examples, and tests.
+
+## Documentation Rules
+
+- Treat specs as source-adjacent contracts and docs as explanatory material.
+- Do not add promises, APIs, guarantees, or workflows not supported by specs or implementation.
+- Preserve important `Must not` and operational constraints when user-facing behavior depends on them.
+- If docs reveal a spec gap, report the gap instead of silently inventing a rule.
+- Keep prose concise and concrete.
+
+Report the specs used, docs changed, and any behavior that remains underspecified.

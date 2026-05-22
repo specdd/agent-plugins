@@ -1,0 +1,26 @@
+Spec: SpecDD Docs Skill
+
+Purpose:
+  Guide agents in writing or updating user, developer, release, onboarding, or operational documentation from SpecDD specs.
+
+Owns:
+  ./specdd-docs/SKILL.md.ejs
+  ./specdd-docs/agents/openai.yaml
+
+Must:
+  Identify the audience and documentation file authority before editing.
+  Explain specified behavior without expanding the contract.
+  Treat specs as source-adjacent contracts and documentation as explanatory material.
+  Keep documentation aligned with changed specs, tasks, examples, and tests.
+  Preserve operational constraints when user-facing behavior depends on them.
+  Keep prose concise and concrete.
+  Report specs used, docs changed, and behavior that remains underspecified.
+
+Must not:
+  Add promises, APIs, guarantees, or workflows unsupported by specs or implementation.
+  Silently invent rules when documentation reveals a spec gap.
+  Let documentation redefine source contracts or expand public behavior.
+
+Depends on:
+  ../fragments/bootstrap-resolution.md.ejs
+  ../fragments/spec-chain-resolution.md.ejs

@@ -1,0 +1,9 @@
+## Bootstrap Resolution
+
+Before doing anything else in the target project, read bootstrap files in this exact order:
+
+1. `.specdd/bootstrap.md`
+2. `.specdd/bootstrap.project.md`, if it exists
+3. `.specdd/bootstrap.local.md`, if it exists
+
+Apply them in that order. Later files may narrow or specialize earlier rules, but must not silently weaken project contracts, inherited constraints, or write authority.

@@ -1,0 +1,28 @@
+Spec: Repository Makefile
+
+Purpose:
+  Provide repository workflow entry points for building generated plugin outputs and managing plugin submodules.
+
+Owns:
+  ./Makefile
+
+Must:
+  Keep the plugin submodule list in a top-level `PLUGINS` variable.
+  Keep validator command paths configurable through top-level variables.
+  Provide `build`, `check`, and `clean` targets that delegate to the package build scripts.
+  Provide `test` to build generated output, check freshness, and run product plugin validators.
+  Provide `validate` to check generated output freshness and run product plugin validators without rebuilding first.
+  Provide `validate-codex` to validate `./plugins/codex` with the Codex plugin validator.
+  Provide `validate-claude` to validate `./plugins/claude` with the Claude plugin validator.
+  Provide `modules-init` to sync and initialize plugin submodules after cloning the root repository.
+  Provide `modules-reset` to discard local plugin submodule changes and pull each plugin submodule back to its remote `main` branch.
+  Provide `modules-release` to test, ask for confirmation, then commit and push generated plugin submodule changes.
+  Use `plugin-versions.json` when forming generated plugin release commit messages.
+  Use each plugin's `plugin-versions.json` value as the generated plugin repository release tag.
+  Fail before committing a generated plugin release when its version tag already exists locally or on `origin`.
+  Create a signed tag for each generated plugin release commit and push both the branch and tag.
+  Keep generated plugin repository operations scoped to submodules listed in `PLUGINS`.
+
+Must not:
+  Commit or push the root repository from `modules-release`; the release operator must record root source changes and submodule gitlinks separately.
+  Delete plugin submodule `.git` directories.

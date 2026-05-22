@@ -1,0 +1,6 @@
+[submodule "plugins/codex"]
+	path = plugins/codex
+	url = git@github.com:specdd/plugin-codex.git
+[submodule "plugins/claude"]
+	path = plugins/claude
+	url = git@github.com:specdd/plugin-claude.git

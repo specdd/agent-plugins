@@ -1,0 +1,4 @@
+interface:
+  display_name: "SpecDD Refactor"
+  short_description: "Refactor while preserving specified behavior"
+  default_prompt: "Refactor this under SpecDD."

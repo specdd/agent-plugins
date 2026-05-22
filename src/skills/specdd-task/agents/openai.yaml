@@ -1,0 +1,4 @@
+interface:
+  display_name: "SpecDD Task"
+  short_description: "Manage SpecDD task lines safely"
+  default_prompt: "Find and update SpecDD tasks."

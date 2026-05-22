@@ -1,0 +1,4 @@
+interface:
+  display_name: "SpecDD Trace"
+  short_description: "Trace specs to code and tests"
+  default_prompt: "Trace this behavior through specs."

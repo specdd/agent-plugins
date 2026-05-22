@@ -1,0 +1,4 @@
+interface:
+  display_name: "SpecDD Plan"
+  short_description: "Plan changes under active specs"
+  default_prompt: "Plan this change under SpecDD."

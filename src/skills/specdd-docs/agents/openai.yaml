@@ -1,0 +1,4 @@
+interface:
+  display_name: "SpecDD Docs"
+  short_description: "Turn specs into concise documentation"
+  default_prompt: "Write docs from these specs."

@@ -1,0 +1,28 @@
+Spec: SpecDD Review Skill
+
+Purpose:
+  Guide agents in reviewing diffs, branches, pull requests, changed files, or proposed changes against active SpecDD contracts.
+
+Owns:
+  ./specdd-review/SKILL.md.ejs
+  ./specdd-review/agents/openai.yaml
+
+Must:
+  Resolve governing specs for changed files before judging the diff.
+  Compare changes against applicable `Must`, `Must not`, `Forbids`, `Scenario`, `Tasks`, and `Done when` entries.
+  Check whether verification matches the behavioral risk.
+  Lead with concrete findings tied to files, behavior, and violated contracts.
+  Order findings by severity.
+  Include file and line when available, the violated or risky contract, concrete behavior or regression risk, and the smallest likely fix.
+  Include open questions or assumptions after findings.
+  Say clearly when there are no findings and mention residual test or spec coverage gaps.
+
+Must not:
+  Edit files unless the user explicitly asks for changes.
+  Invent violations beyond the active specs.
+  Hide underspecified behavior as an implementation defect.
+  Treat underspecified behavior as a violation instead of uncertainty.
+
+Depends on:
+  ../fragments/bootstrap-resolution.md.ejs
+  ../fragments/spec-chain-resolution.md.ejs

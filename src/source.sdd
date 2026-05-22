@@ -1,0 +1,20 @@
+Spec: Agent Plugin Source
+
+Purpose:
+  Own shared skill templates, product plugin templates, reusable fragments, shared files, and build scripts.
+
+Owns:
+  ./skills/**
+  ./plugins/**
+  ./shared/**
+  ./fragments/**
+  ./build/**
+
+Must:
+  Treat source files as the editable authority for generated `../plugins/*` submodule output.
+  Keep shared files centralized under `./shared` or repository-level files when reused by multiple plugin targets.
+  Keep generated plugin output deterministic and committed in each plugin submodule.
+
+Must not:
+  Store marketplace-only skill behavior outside source templates.
+  Duplicate shared assets or licenses in product plugin source templates.

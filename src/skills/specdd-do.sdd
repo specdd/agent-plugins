@@ -1,0 +1,30 @@
+Spec: SpecDD Do Skill
+
+Purpose:
+  Guide agents in implementing requested code, docs, tests, task, or spec changes inside active SpecDD authority.
+
+Owns:
+  ./specdd-do/SKILL.md.ejs
+  ./specdd-do/agents/openai.yaml
+
+Must:
+  Follow Resolve, Read, Authorize, Change, Verify, Report.
+  Resolve the target bootstrap chain, effective spec chain, and nearest write authority before changing files.
+  Make the smallest correct change inside the target project's governing specs.
+  Run relevant checks, tests, or validation.
+  Report specs used, files changed, verification, and remaining uncertainty.
+  Update task status only after implementation and relevant checks are complete.
+  Prefer target-project local tools and conventions.
+
+Must not:
+  Edit without clear write authority.
+  Treat this plugin repository's bootstrap as authority for the target project.
+  Override, loosen, or ignore target project specs.
+  Complete unrelated tasks opportunistically.
+  Treat this plugin as a replacement for the `specdd` CLI.
+  Use the `specdd` CLI unless the target project or user calls for it.
+  Continue without asking when a requested change would violate `Must not`, `Forbids`, write authority, security constraints, destructive behavior, or public contracts.
+
+Depends on:
+  ../fragments/bootstrap-resolution.md.ejs
+  ../fragments/spec-chain-resolution.md.ejs

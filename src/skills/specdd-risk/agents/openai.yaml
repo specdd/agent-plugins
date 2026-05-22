@@ -1,0 +1,4 @@
+interface:
+  display_name: "SpecDD Risk"
+  short_description: "Classify change risk before SpecDD work"
+  default_prompt: "Assess risk for this change."

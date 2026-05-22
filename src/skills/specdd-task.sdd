@@ -1,0 +1,30 @@
+Spec: SpecDD Task Skill
+
+Purpose:
+  Guide agents in finding, adding, interpreting, organizing, or updating `Tasks` entries in SpecDD `.sdd` files.
+
+Owns:
+  ./specdd-task/SKILL.md.ejs
+  ./specdd-task/agents/openai.yaml
+
+Must:
+  Read the applicable spec chain for the requested scope, including inherited constraints.
+  Focus task handling on task-bearing specs that apply to the requested scope.
+  Update task status only after implementation and relevant checks are complete.
+  Treat parent tasks as planning context unless directly targeted.
+  Update task status only in the currently targeted spec unless instructed otherwise.
+  Add tasks only when they are local, actionable, and consistent with inherited constraints.
+  Keep task text concise and implementation-oriented.
+  Use `[!]` for blocked work and `[?]` for unresolved design decisions.
+  Use `[-]` only when the task is intentionally skipped and the reason is clear.
+  Report task ids or exact task text, status changes, verification, and blocked or uncertain tasks.
+
+Must not:
+  Use task lines to override `Must`, `Must not`, `Forbids`, or write authority.
+  Complete unrelated tasks opportunistically.
+  Mark `[x]` before implementation and relevant checks are complete.
+  Add or update tasks outside active authority.
+
+Depends on:
+  ../fragments/bootstrap-resolution.md.ejs
+  ../fragments/spec-chain-resolution.md.ejs

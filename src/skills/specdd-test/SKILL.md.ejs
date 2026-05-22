@@ -1,0 +1,30 @@
+---
+name: specdd-test
+description: Use when <%= agentName %> needs to derive, add, update, or assess focused tests from active SpecDD `Must`, `Scenario`, `Handles`, `Returns`, `Raises`, `Tasks`, or `Done when` contracts.
+---
+
+# SpecDD Test
+
+Use this skill to connect SpecDD contracts to focused verification.
+
+<%- include('/fragments/bootstrap-resolution.md.ejs') -%>
+
+<%- include('/fragments/spec-chain-resolution.md.ejs') -%>
+
+## Workflow
+
+1. Identify test authority from the nearest relevant spec.
+2. Derive cases from applicable `Must`, `Scenario`, `Handles`, `Returns`, `Raises`, `Tasks`, and `Done when` entries.
+3. Prefer the smallest tests that prove the specified behavior.
+4. Run the relevant project test command when available.
+
+## Test Rules
+
+- Test observable behavior, not wording in the spec.
+- Cover forbidden behavior when it can regress silently.
+- Add regression tests for confirmed bugs.
+- Do not create broad test harnesses unless the spec or project convention requires them.
+- If the spec requires behavior but grants no clear test-file authority, ask before editing.
+
+Report which spec entries each test covers and any specified behavior that still
+lacks verification.
