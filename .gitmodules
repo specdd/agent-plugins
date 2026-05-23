@@ -16,3 +16,6 @@
 [submodule "plugins/antigravity"]
 	path = plugins/antigravity
 	url = git@github.com:specdd/plugin-antigravity.git
+[submodule "plugins/agentskills"]
+	path = plugins/agentskills
+	url = git@github.com:specdd/agentskills.git

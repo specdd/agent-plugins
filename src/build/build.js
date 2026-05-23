@@ -35,18 +35,18 @@ main().catch((error) => {
 
 async function main() {
   const mode = cleanMode ? "clean" : checkMode ? "check" : "build";
-  log(`Starting generated plugin ${mode}.`);
+  log(`Starting generated output ${mode}.`);
   log(`Targets: ${pluginTargets.map((target) => target.name).join(", ")}.`);
 
   const pluginVersions = await readPluginVersions(pluginTargets.map((target) => target.name));
   log(
-    `Plugin versions: ${pluginTargets
+    `Target versions: ${pluginTargets
       .map((target) => `${target.name}@${pluginVersions[target.name]}`)
       .join(", ")}.`,
   );
 
   if (cleanMode) {
-    log("Cleaning generated plugin outputs.");
+    log("Cleaning generated outputs.");
     for (const target of pluginTargets) {
       const removedEntries = await cleanOutputDirectory(path.join(outPlugins, target.name));
       log(`Cleaned plugins/${target.name}; removed ${removedEntries} generated entries.`);
@@ -57,13 +57,13 @@ async function main() {
 
   const tempDir = await fs.promises.mkdtemp(path.join(os.tmpdir(), "specdd-plugins-"));
   const tempPlugins = path.join(tempDir, "plugins");
-  log(`Rendering expected plugin trees in ${tempDir}.`);
+  log(`Rendering expected output trees in ${tempDir}.`);
 
   try {
     await renderPluginTrees(pluginTargets, pluginVersions, tempPlugins);
 
     if (checkMode) {
-      log("Comparing expected plugin trees with generated plugin outputs.");
+      log("Comparing expected output trees with generated outputs.");
       const differences = [];
       for (const target of pluginTargets) {
         const targetDifferences = await compareTrees(
@@ -81,13 +81,13 @@ async function main() {
 
       if (differences.length > 0) {
         differences.forEach((difference) => console.error(difference));
-        throw new Error("Generated plugin outputs are stale. Run `make build`.");
+        throw new Error("Generated outputs are stale. Run `make build`.");
       }
-      log("Check succeeded. Generated plugin outputs are current.");
+      log("Check succeeded. Generated outputs are current.");
       return;
     }
 
-    log("Replacing generated plugin outputs.");
+    log("Replacing generated outputs.");
     for (const target of pluginTargets) {
       const outputDir = path.join(outPlugins, target.name);
       const removedEntries = await cleanOutputDirectory(outputDir);
@@ -95,7 +95,7 @@ async function main() {
       const copiedEntries = await copyTree(path.join(tempPlugins, target.name), outputDir);
       log(`Copied plugins/${target.name}; wrote ${copiedEntries} generated files.`);
     }
-    log("Build succeeded. Generated plugin outputs were rebuilt.");
+    log("Build succeeded. Generated outputs were rebuilt.");
   } finally {
     await fs.promises.rm(tempDir, { recursive: true, force: true });
     log("Removed temporary build directory.");
@@ -122,7 +122,7 @@ async function readPluginVersions(pluginNames) {
 async function renderPluginTrees(targets, pluginVersions, targetRoot) {
   for (const target of targets) {
     const targetDir = path.join(targetRoot, target.name);
-    log(`Rendering ${target.name} plugin.`);
+    log(`Rendering ${target.name} output.`);
     const templateData = createTemplateData(target);
 
     const sharedFiles = await copyIncludedFiles(
@@ -139,26 +139,23 @@ async function renderPluginTrees(targets, pluginVersions, targetRoot) {
       log(`Copied ${target.name} shared license.`);
     }
 
-    const pluginFiles = await copyIncludedFiles(
+    const packageFiles = await copyIncludedFiles(
       path.join(srcPlugins, target.name),
       targetDir,
       target.includes.plugin,
       templateData,
     );
-    log(`Copied ${target.name} plugin includes: ${pluginFiles} files.`);
+    log(`Copied ${target.name} package includes: ${packageFiles} files.`);
     if (target.manifest) {
       await setManifestVersion(targetDir, target.manifest, pluginVersions[target.name]);
       log(`Set ${target.name} manifest version to ${pluginVersions[target.name]}.`);
     } else {
       log(`Skipped ${target.name} manifest version; target has no manifest.`);
     }
-    const renderedSkills = await renderSkills(
-      target,
-      path.join(targetDir, "skills"),
-      templateData,
-    );
+    const targetSkillsDir = path.join(targetDir, target.skillsOutputDir || "skills");
+    const renderedSkills = await renderSkills(target, targetSkillsDir, templateData);
     log(`Rendered ${target.name} skills: ${renderedSkills} skills.`);
-    log(`Rendered ${target.name} plugin successfully.`);
+    log(`Rendered ${target.name} output successfully.`);
   }
 }
 

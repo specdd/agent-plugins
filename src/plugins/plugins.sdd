@@ -1,7 +1,7 @@
-Spec: Product Plugin Sources
+Spec: Generated Package Sources
 
 Purpose:
-  Own product-specific plugin package templates generated into plugin submodules.
+  Own product-specific plugin package templates and Agent Skills standard distribution templates generated into output submodules.
 
 Structure:
   ./codex/**: Codex plugin manifest and README source.
@@ -10,6 +10,7 @@ Structure:
   ./junie/**: Junie skills package README source.
   ./cline/**: Cline skills package README source.
   ./antigravity/**: Antigravity plugin manifest and README source.
+  ./agentskills/**: Agent Skills standard distribution README source.
 
 Owns:
   ./codex/**
@@ -18,6 +19,7 @@ Owns:
   ./junie/**
   ./cline/**
   ./antigravity/**
+  ./agentskills/**
 
 Must:
   Keep product-specific manifests, README files, and product-only metadata here.
@@ -27,6 +29,8 @@ Must:
   Document GitHub Copilot installation with explicit `gh skill install` commands for each skill.
   Document Junie and Cline manual copy installation as the primary path, with `gh skill install` as a secondary tracked path.
   Keep Antigravity as a native plugin package with root `plugin.json` and generated `skills/*/SKILL.md`.
+  Keep Agent Skills as a generic standards-compliant skills distribution with generated root-level `<skill-name>/SKILL.md` directories.
+  Document `specdd agentskills deploy` as the primary Agent Skills install path and git copy as the secondary path.
   Share common skills, fragments, assets, and licenses through parent source areas instead of duplicating them here.
   Keep paths inside manifests relative to the generated plugin root.
 

@@ -1,37 +1,56 @@
 Spec: Repository Makefile
 
 Purpose:
-  Provide repository workflow entry points for building generated plugin outputs and managing plugin submodules.
+  Provide repository workflow entry points for building generated outputs and managing output submodules.
 
 Owns:
   ./Makefile
 
 Must:
-  Keep the plugin submodule list in a top-level `PLUGINS` variable.
-  Keep `PLUGINS` limited to generated plugin repositories that are ready for release automation.
+  Keep classic plugin output submodules in a top-level `PLUGIN_REPOS` variable.
+  Keep Agent Skills standard output submodules in a top-level `AGENT_SKILLS_REPOS` variable.
+  Keep releasable generated output submodules in a top-level `GENERATED_REPOS` variable.
+  Keep `GENERATED_REPOS` limited to generated output repositories that are ready for release automation.
   Keep validator command paths configurable through top-level variables.
+  Keep Agent Skills GitHub release repository, signing key, and signing tool paths configurable through top-level variables.
+  Keep build and shell helper command paths configurable through top-level variables when they are invoked directly.
+  Provide one shared preflight target that verifies required external release, validation, and build binaries before target work starts.
   Provide `build`, `check`, and `clean` targets that delegate to the package build scripts.
-  Provide `test` to build generated output, check freshness, and run product plugin validators.
-  Provide `validate` to check generated output freshness and run product plugin validators without rebuilding first.
+  Verify required external tools before `build`, `check`, or `clean` invokes external commands.
+  Provide `test` to build generated output, check freshness, and run target validators.
+  Provide `validate` to check generated output freshness and run target validators without rebuilding first.
   Provide `validate-codex` to validate `./plugins/codex` with the Codex plugin validator.
   Provide `validate-claude` to validate `./plugins/claude` with the Claude plugin validator.
   Provide `validate-copilot` to validate `./plugins/copilot` with `gh skill publish --dry-run`.
   Provide `validate-cline` to validate `./plugins/cline` with the project-local Cline validator.
   Provide `validate-antigravity` to validate `./plugins/antigravity` with `agy plugin validate`.
+  Provide `validate-agentskills` to validate `./plugins/agentskills` with the project-local Agent Skills validator.
+  Run shared tool preflight before any product or Agent Skills validator executes through `validate-outputs`.
   Do not add a Makefile validator for Junie until a stable native validator exists.
-  Provide `modules-init` to sync and initialize plugin submodules after cloning the root repository.
-  Provide `modules-reset` to discard local plugin submodule changes and pull each plugin submodule back to its remote `main` branch.
-  Provide `modules-release` to test, ask for confirmation, then commit and push generated plugin submodule changes.
-  Skip a plugin during `modules-release` when its generated submodule output has no local changes after the build.
-  Use `plugin-versions.json` when forming generated plugin release commit messages.
-  Use each plugin's `plugin-versions.json` value as the generated plugin repository release tag.
-  Fail before committing a generated plugin release when its version tag already exists locally or on `origin`.
-  Create a signed tag for each generated plugin release commit and push both the branch and tag.
-  Keep generated plugin repository operations scoped to submodules listed in `PLUGINS`.
+  Provide `modules-init` to sync and initialize generated output submodules after cloning the root repository.
+  Provide `modules-reset` to discard local output submodule changes and pull each output submodule back to its remote `main` branch.
+  Verify required external tools before `modules-init` or `modules-reset` invokes external commands.
+  Provide `modules-release` to test, ask for confirmation, then commit and push generated output submodule changes.
+  Run shared tool preflight before `modules-release` builds, validates, commits, tags, pushes, prompts, or creates GitHub releases.
+  Verify GitHub CLI authentication and the Agent Skills signing key at the start of release targets before any release side effects.
+  Skip a generated output during `modules-release` when its generated submodule output has no local changes after the build.
+  Use `plugin-versions.json` when forming generated output release commit messages.
+  Use each generated target's `plugin-versions.json` value as the generated output repository release tag.
+  Fail before committing a generated output release when its version tag already exists locally or on `origin`.
+  Create a signed tag for each generated output release commit and push both the branch and tag.
+  After successfully pushing an Agent Skills standard distribution tag, create a GitHub release for that exact tag.
+  Create the Agent Skills GitHub release only after the generated distribution branch push and tag push both succeed.
+  Build the Agent Skills GitHub release asset from the exact pushed tag as `agentskills.zip`.
+  Sign `agentskills.zip` with GPG key `FD87313256E08C486951F9091372D38569116BC5` and upload `agentskills.zip.asc`.
+  Set the Agent Skills GitHub release title to the tag name.
+  Set the Agent Skills GitHub release description to `Automatic release`.
+  Verify local Agent Skills release tooling before creating the GitHub release.
+  Keep generated output repository operations scoped to submodules listed in `GENERATED_REPOS`.
 
 Must not:
   Commit or push the root repository from `modules-release`; the release operator must record root source changes and submodule gitlinks separately.
-  Delete plugin submodule `.git` directories.
+  Delete output submodule `.git` directories.
 
 Tasks:
-  [x] Add release-ready Copilot, Junie, Cline, and Antigravity plugin submodules to `PLUGINS`.
+  [x] Add release-ready Copilot, Junie, Cline, and Antigravity plugin submodules to `PLUGIN_REPOS`.
+  [x] Add release-ready Agent Skills standard output submodule to `AGENT_SKILLS_REPOS`.

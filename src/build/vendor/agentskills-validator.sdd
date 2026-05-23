@@ -1,0 +1,29 @@
+Spec: Agent Skills Validator
+
+Platform: Node.js
+
+Purpose:
+  Validate the generated Agent Skills standard distribution using documented Agent Skills constraints.
+
+Owns:
+  ./agentskills-validator.js
+
+Must:
+  Run without third-party dependencies or network access.
+  Accept the generated package root path as its only command-line argument.
+  Validate root-level `<skill-name>/SKILL.md` directories under the given distribution root.
+  Require every skill directory name to match the Agent Skills `name` field constraints.
+  Require each `SKILL.md` file to start with YAML frontmatter followed by Markdown content.
+  Require `name` and `description` frontmatter fields.
+  Require frontmatter `name` to match the skill directory name.
+  Require `name` to be 1-64 characters, lowercase ASCII letters, numbers, and hyphens only, with no leading, trailing, or consecutive hyphen.
+  Require `description` to be 1-1024 characters.
+  Allow optional `license`, `compatibility`, `metadata`, and `allowed-tools` frontmatter fields.
+  Require `compatibility` to be 1-500 characters when present.
+  Require `metadata` to be a mapping when present.
+  Print a concise validation summary on success.
+  Print concrete file-specific failures and exit nonzero on validation failure.
+
+Must not:
+  Modify generated Agent Skills distribution output.
+  Validate Codex, Claude, Copilot, Junie, Cline, or Antigravity package-specific rules.

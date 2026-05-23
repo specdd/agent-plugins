@@ -1,6 +1,6 @@
 {
   "name": "@specdd/agent-plugins",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "Source templates for SpecDD agent plugins.",
   "repository": "https://github.com/specdd/agent-plugins",

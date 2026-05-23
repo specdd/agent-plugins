@@ -3,22 +3,23 @@ Spec: Plugin Build Script
 Platform: Node.js
 
 Purpose:
-  Render source plugin templates into product plugin submodule outputs.
+  Render source templates into generated output submodules.
 
 Owns:
   ./build.js
   ./plugins.js
 
 Must:
-  Render EJS templates from `../skills` into each `../../plugins/*/skills` output.
+  Render EJS templates from `../skills` into each target's configured generated skills location.
   Use `./plugins.js` as the explicit include map for product, shared, and skill files.
-  Configure targets for Codex, Claude Code, GitHub Copilot, Junie, Cline, and Antigravity.
+  Configure targets for Codex, Claude Code, GitHub Copilot, Junie, Cline, Antigravity, and Agent Skills.
   Expose each target's human-readable agent name to EJS templates.
-  Copy only files explicitly included by the target config into plugin outputs.
+  Copy only files explicitly included by the target config into generated outputs.
   Require every configured target to have a version in `../../plugin-versions.json`.
   Set each generated plugin manifest version from `../../plugin-versions.json` when the target config declares a manifest.
   Allow skill-only targets to omit a manifest by declaring `manifest: null`.
-  Preserve each plugin submodule's `.git` directory during clean and build.
+  Allow targets to configure the generated skill output directory, including repository root for Agent Skills.
+  Preserve each output submodule's `.git` directory during clean and build.
   Support build, check, and clean modes.
   Fail when generated output is stale in check mode.
   Log coarse build phases, target names, counts, and successful completion without per-file output.
